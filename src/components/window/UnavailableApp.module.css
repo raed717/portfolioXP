@@ -1,0 +1,32 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--xp-space-6);
+  height: 100%;
+  padding: var(--xp-space-6);
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--xp-space-5);
+  max-width: 48ch;
+  margin: 0 auto;
+  font-size: var(--xp-font-size-content);
+  line-height: 1.5;
+}
+
+.content p {
+  margin: 0 0 var(--xp-space-4);
+}
+
+.content a {
+  color: var(--xp-link);
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}

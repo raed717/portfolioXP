@@ -1,0 +1,41 @@
+.button {
+  min-width: 75px;
+  min-height: 23px;
+  padding: var(--xp-space-1) var(--xp-space-5);
+  font: inherit;
+  color: var(--xp-text);
+  background: linear-gradient(
+    180deg,
+    var(--xp-panel-bg) 0%,
+    var(--xp-button-face) 60%,
+    var(--xp-button-active) 100%
+  );
+  border: 1px solid var(--xp-button-border);
+  border-radius: var(--xp-radius-button);
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: inset 0 0 0 2px var(--xp-button-hover-glow);
+}
+
+.button:active {
+  background: var(--xp-button-active);
+}
+
+.button:focus-visible {
+  outline: 1px dotted var(--xp-text);
+  outline-offset: -4px;
+}
+
+.button:disabled {
+  color: var(--xp-text-muted);
+  cursor: default;
+  box-shadow: none;
+}
+
+@media (max-width: 767px) {
+  .button {
+    min-height: var(--xp-touch-target);
+  }
+}

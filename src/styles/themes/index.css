@@ -1,0 +1,65 @@
+/*
+ * Alternate skins (§3.2, §12). Each theme overrides tokens only.
+ * Add a new skin here and register its id in src/lib/themes.ts.
+ * Selectors work on any element, so Control Panel can preview a skin inside a nested box.
+ */
+[data-theme="olive"] {
+  --xp-titlebar-active-start: #6f8a3c;
+  --xp-titlebar-active-end: #a7bd78;
+  --xp-titlebar-inactive-start: #b6be98;
+  --xp-titlebar-inactive-end: #d4dabf;
+  --xp-window-border: #5b6f2e;
+  --xp-taskbar-start: #7f9550;
+  --xp-taskbar-end: #62783b;
+  --xp-tray-bg: #94a868;
+  --xp-selection-bg: #5b6f2e;
+  --xp-startmenu-header-start: #5b6f2e;
+  --xp-startmenu-header-end: #8aa05a;
+  --xp-startmenu-right-bg: #e8edd6;
+  --xp-startmenu-divider: #b6c48f;
+}
+
+[data-theme="silver"] {
+  --xp-titlebar-active-start: #8e8ea6;
+  --xp-titlebar-active-end: #c9c9d8;
+  --xp-titlebar-inactive-start: #bdbdca;
+  --xp-titlebar-inactive-end: #dcdce4;
+  --xp-window-border: #7d7d95;
+  --xp-taskbar-start: #8f8fa6;
+  --xp-taskbar-end: #6f6f88;
+  --xp-tray-bg: #a3a3b8;
+  --xp-selection-bg: #4f4f72;
+  --xp-startmenu-header-start: #6f6f88;
+  --xp-startmenu-header-end: #a3a3b8;
+  --xp-startmenu-right-bg: #e6e6ee;
+  --xp-startmenu-divider: #bcbccc;
+}
+
+/* Dark skin: surfaces and text flip, chrome stays glossy. */
+[data-theme="midnight"] {
+  --xp-titlebar-active-start: #23305e;
+  --xp-titlebar-active-end: #4a5fa8;
+  --xp-titlebar-inactive-start: #3a4160;
+  --xp-titlebar-inactive-end: #555d7e;
+  --xp-window-border: #1b2448;
+  --xp-window-bg: #2a2f3e;
+  --xp-panel-bg: #1e2230;
+  --xp-panel-border: #4a5270;
+  --xp-taskbar-start: #222a4a;
+  --xp-taskbar-end: #151a33;
+  --xp-tray-bg: #2e3a6a;
+  --xp-button-face: #3a4052;
+  --xp-button-border: #6a7aaa;
+  --xp-button-active: #2d3242;
+  --xp-selection-bg: #4a63c4;
+  --xp-text: #e8eaf2;
+  --xp-text-muted: #a3a9bd;
+  --xp-link: #8fb4ff;
+  --xp-startmenu-left-bg: #1e2230;
+  --xp-startmenu-right-bg: #2a3150;
+  --xp-startmenu-divider: #46507a;
+  --xp-startmenu-header-start: #1b2448;
+  --xp-startmenu-header-end: #3a4a8a;
+  --xp-desktop-fallback: #141a33;
+  --xp-sidekick-bubble: #2f3550;
+}

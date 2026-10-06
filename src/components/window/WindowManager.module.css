@@ -1,0 +1,7 @@
+/* Windows are positioned inside the area above the taskbar; empty space stays clickable. */
+.layer {
+  position: absolute;
+  inset: 0 0 var(--xp-taskbar-height) 0;
+  z-index: var(--xp-z-windows);
+  pointer-events: none;
+}

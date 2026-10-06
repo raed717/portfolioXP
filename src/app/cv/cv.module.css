@@ -1,0 +1,90 @@
+.page {
+  max-width: 80ch;
+  margin: 0 auto;
+  padding: var(--xp-space-6);
+  background: var(--xp-panel-bg);
+  min-height: 100%;
+  font-size: var(--xp-font-size-content-lg);
+  line-height: 1.5;
+}
+
+.page h1,
+.page h2,
+.page h3 {
+  font-weight: bold;
+}
+
+.page h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.page h2 {
+  margin-top: 2rem;
+  padding-bottom: var(--xp-space-2);
+  border-bottom: 2px solid var(--xp-titlebar-active-start);
+  font-size: 1.15rem;
+}
+
+.page h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.page a {
+  color: var(--xp-link);
+  text-decoration: underline;
+}
+
+/* Tailwind preflight strips list and paragraph styling; restore it for readable prose. */
+.page :where(p) {
+  margin: 0 0 var(--xp-space-4);
+}
+
+.page ul:not(.inline) {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.header {
+  padding-bottom: var(--xp-space-5);
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-6);
+  margin-bottom: var(--xp-space-4);
+}
+
+.role {
+  margin: 0;
+  color: var(--xp-text-muted);
+  font-weight: bold;
+}
+
+.meta {
+  margin: var(--xp-space-1) 0;
+  color: var(--xp-text-muted);
+  font-size: var(--xp-font-size-content);
+}
+
+.item {
+  margin-bottom: var(--xp-space-6);
+}
+
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xp-space-2) var(--xp-space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.skills dt {
+  font-weight: bold;
+}
+
+.skills dd {
+  margin: 0 0 var(--xp-space-4);
+}

@@ -1,0 +1,138 @@
+.root {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-5);
+  height: 100%;
+  overflow-y: auto;
+  padding: var(--xp-space-5);
+  font-size: var(--xp-font-size-chrome);
+  background: var(--xp-panel-bg);
+}
+
+.heading {
+  margin: 0 0 var(--xp-space-3);
+  padding-bottom: var(--xp-space-1);
+  font-size: var(--xp-font-size-ui);
+  font-weight: bold;
+  color: var(--xp-selection-bg);
+  border-bottom: 1px solid var(--xp-startmenu-divider);
+}
+
+.systemBody {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--xp-space-5);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--xp-space-2) var(--xp-space-5);
+  margin: 0;
+}
+
+.facts dt {
+  color: var(--xp-text-muted);
+}
+
+.facts dd {
+  margin: 0;
+}
+
+.drives {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--xp-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.drive {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-4);
+  width: 100%;
+  padding: var(--xp-space-3);
+  font: inherit;
+  color: var(--xp-text);
+  text-align: left;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--xp-radius-button);
+  cursor: pointer;
+}
+
+.drive:hover {
+  background: var(--xp-startmenu-right-bg);
+}
+
+.active {
+  background: var(--xp-startmenu-right-bg);
+  border-color: var(--xp-startmenu-divider);
+}
+
+.drive:focus-visible {
+  outline: 1px dotted var(--xp-text);
+}
+
+.driveInfo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--xp-space-1);
+  min-width: 0;
+}
+
+.driveName {
+  font-weight: bold;
+}
+
+.bar {
+  height: 12px;
+  overflow: hidden;
+  background: var(--xp-panel-bg);
+  border: 1px solid var(--xp-panel-border);
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--xp-titlebar-active-end),
+    var(--xp-titlebar-active-start)
+  );
+}
+
+.driveMeta {
+  color: var(--xp-text-muted);
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--xp-space-2) var(--xp-space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-3);
+}
+
+@container (max-width: 480px) {
+  .drives {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .drive {
+    min-height: var(--xp-touch-target);
+  }
+}

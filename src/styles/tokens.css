@@ -1,0 +1,127 @@
+/*
+ * Design tokens (THEME_CONTEXT.md §3.2–3.4).
+ * Components must reference these variables — never hardcode colors or fonts.
+ * Alternate skins override tokens only, via [data-theme="..."] in ./themes/.
+ * `[data-theme="luna"]` lets a nested element (e.g. a theme preview) reset to the default skin.
+ */
+:root,
+[data-theme="luna"] {
+  /* Window chrome */
+  --xp-titlebar-active-start: #0a5fe0;
+  --xp-titlebar-active-end: #3d95ff;
+  --xp-titlebar-inactive-start: #7a96df;
+  --xp-titlebar-inactive-end: #a9bdf0;
+  --xp-titlebar-text: #ffffff;
+  --xp-window-border: #0831d9;
+  --xp-window-bg: #ece9d8;
+  --xp-panel-bg: #ffffff;
+  --xp-panel-border: #7f9db9;
+
+  /* Taskbar & Start */
+  --xp-taskbar-start: #2a62d9;
+  --xp-taskbar-end: #1f4fc0;
+  --xp-start-green: #3c9a3c;
+  --xp-start-green-hover: #4fb24f;
+  --xp-tray-bg: #0f8ee8;
+
+  /* Controls */
+  --xp-button-face: #f4f3ee;
+  --xp-button-border: #003c74;
+  --xp-button-hover-glow: #f8b636;
+  --xp-button-active: #e1ddcf;
+  --xp-selection-bg: #316ac5;
+  --xp-selection-text: #ffffff;
+  --xp-close-red: #e0462b;
+
+  /* Text */
+  --xp-text: #000000;
+  --xp-text-muted: #5a5a5a;
+  --xp-link: #0000ee;
+
+  /* Semantic */
+  --xp-error: #d32f2f;
+  --xp-warning: #f5a623;
+  --xp-success: #2e8b57;
+
+  /* Surfaces outside the desktop (boot, login, BSOD) */
+  --xp-boot-bg: #000000;
+  --xp-login-bg-start: #5a7edc;
+  --xp-login-bg-end: #3463d3;
+  --xp-desktop-fallback: #3a6ea5;
+  --xp-login-accent: #f0a640;
+  --xp-login-divider: #8fb0f0;
+  --xp-bsod-bg: #0b2a9e;
+  --xp-bsod-text: #ffffff;
+
+  /* Start menu */
+  --xp-startmenu-left-bg: #ffffff;
+  --xp-startmenu-right-bg: #d3e5fa;
+  --xp-startmenu-divider: #95bdee;
+  --xp-startmenu-header-start: #1c64d8;
+  --xp-startmenu-header-end: #3b8cf2;
+
+  /* Terminal */
+  --xp-terminal-bg: #0c0c0c;
+  --xp-terminal-text: #cccccc;
+  --xp-terminal-command: #ffffff;
+  --xp-terminal-accent: #7fd1ff;
+  --xp-terminal-muted: #8a8a8a;
+  --xp-terminal-error: #ff6b6b;
+
+  /* Sidekick speech bubble (classic tooltip yellow) */
+  --xp-sidekick-bubble: #ffffe1;
+
+  /* Desktop icons */
+  --xp-icon-label: #ffffff;
+
+  /* Typography (§3.3) */
+  --xp-font-ui: Tahoma, "Segoe UI", Verdana, "DejaVu Sans", sans-serif;
+  --xp-font-mono: "Lucida Console", "Courier New", "DejaVu Sans Mono", monospace;
+  --xp-font-size-chrome: 11px;
+  --xp-font-size-ui: 12px;
+  --xp-font-size-content: 13px;
+  --xp-font-size-content-lg: 14px;
+  --xp-title-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+  --xp-label-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.75);
+
+  /* Shape & depth (§3.4) */
+  --xp-radius-window: 8px 8px 0 0;
+  --xp-radius-button: 3px;
+  --xp-shadow-window-active: 2px 2px 12px rgba(0, 0, 0, 0.45);
+  --xp-shadow-window-inactive: 1px 1px 6px rgba(0, 0, 0, 0.25);
+
+  /* Spacing scale */
+  --xp-space-1: 2px;
+  --xp-space-2: 4px;
+  --xp-space-3: 6px;
+  --xp-space-4: 8px;
+  --xp-space-5: 12px;
+  --xp-space-6: 16px;
+
+  /* Layout */
+  --xp-taskbar-height: 30px;
+  --xp-titlebar-height: 26px;
+  --xp-icon-cell: 90px;
+  --xp-touch-target: 44px;
+
+  /* Stacking layers (windows live between base and overlay) */
+  --xp-z-desktop: 0;
+  --xp-z-windows: 10;
+  --xp-z-taskbar: 9000;
+  --xp-z-menu: 9500;
+  --xp-z-overlay: 10000;
+}
+
+/* Keep in sync with TASKBAR_HEIGHT and breakpoints in src/lib/layout.ts (§9). */
+@media (max-width: 1023px) {
+  :root {
+    --xp-icon-cell: 76px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --xp-taskbar-height: 44px;
+    --xp-titlebar-height: 44px;
+  }
+}

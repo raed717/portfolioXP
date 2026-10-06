@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+@import "../styles/themes/index.css";
+
+/* Expose tokens as Tailwind utilities (bg-xp-window, text-xp-muted, font-ui, …). */
+@theme inline {
+  --color-xp-window: var(--xp-window-bg);
+  --color-xp-panel: var(--xp-panel-bg);
+  --color-xp-panel-border: var(--xp-panel-border);
+  --color-xp-text: var(--xp-text);
+  --color-xp-muted: var(--xp-text-muted);
+  --color-xp-link: var(--xp-link);
+  --color-xp-selection: var(--xp-selection-bg);
+  --color-xp-selection-text: var(--xp-selection-text);
+  --font-ui: var(--xp-font-ui);
+  --font-mono: var(--xp-font-mono);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--xp-desktop-fallback);
+  color: var(--xp-text);
+  font-family: var(--xp-font-ui);
+  font-size: var(--xp-font-size-ui);
+  -webkit-font-smoothing: auto;
+}
+
+/* XP-style dotted focus ring on every interactive element (§10). */
+:focus-visible {
+  outline: 1px dotted var(--xp-text);
+  outline-offset: 1px;
+}
+
+.sr-only-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Rule §2.3: honour reduced motion globally; the Control Panel toggle sets data-reduce-motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+[data-reduce-motion="true"] *,
+[data-reduce-motion="true"] *::before,
+[data-reduce-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}

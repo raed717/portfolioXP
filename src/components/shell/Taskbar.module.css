@@ -1,0 +1,211 @@
+.taskbar {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: var(--xp-z-taskbar);
+  display: flex;
+  align-items: stretch;
+  gap: var(--xp-space-2);
+  height: var(--xp-taskbar-height);
+  background: linear-gradient(
+    180deg,
+    var(--xp-titlebar-active-end) 0%,
+    var(--xp-taskbar-start) 12%,
+    var(--xp-taskbar-start) 70%,
+    var(--xp-taskbar-end) 100%
+  );
+  border-top: 1px solid var(--xp-titlebar-active-end);
+  user-select: none;
+}
+
+.start {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-3);
+  padding: 0 var(--xp-space-6) 0 var(--xp-space-4);
+  font-family: var(--xp-font-ui);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: bold;
+  color: var(--xp-titlebar-text);
+  text-shadow: var(--xp-title-shadow);
+  background: linear-gradient(
+    180deg,
+    var(--xp-start-green-hover) 0%,
+    var(--xp-start-green) 45%,
+    var(--xp-start-green) 85%,
+    var(--xp-start-green-hover) 100%
+  );
+  border: 0;
+  border-radius: 0 10px 10px 0;
+  box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.start:hover {
+  filter: brightness(1.1);
+}
+
+.start[aria-expanded="true"] {
+  filter: brightness(0.85);
+}
+
+.start:focus-visible {
+  outline: 1px dotted var(--xp-titlebar-text);
+  outline-offset: -4px;
+}
+
+.tasks {
+  display: flex;
+  flex: 1;
+  gap: var(--xp-space-1);
+  min-width: 0;
+  margin: 0;
+  padding: 3px 0;
+  list-style: none;
+}
+
+.taskItem {
+  flex: 0 1 160px;
+  min-width: 0;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-2);
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--xp-space-4);
+  font: inherit;
+  font-size: var(--xp-font-size-chrome);
+  color: var(--xp-titlebar-text);
+  text-align: left;
+  background: linear-gradient(180deg, var(--xp-titlebar-active-end), var(--xp-taskbar-start));
+  border: 1px solid var(--xp-taskbar-end);
+  border-radius: var(--xp-radius-button);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.task:hover {
+  filter: brightness(1.12);
+}
+
+.taskActive {
+  background: linear-gradient(180deg, var(--xp-taskbar-end), var(--xp-taskbar-start));
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.task:focus-visible {
+  outline: 1px dotted var(--xp-titlebar-text);
+  outline-offset: -3px;
+}
+
+.taskLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tray {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-3);
+  padding: 0 var(--xp-space-5) 0 var(--xp-space-4);
+  color: var(--xp-titlebar-text);
+  background: linear-gradient(180deg, var(--xp-titlebar-active-end), var(--xp-tray-bg));
+  border-left: 1px solid var(--xp-taskbar-end);
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+.trayButton {
+  display: grid;
+  place-items: center;
+  padding: var(--xp-space-1);
+  background: none;
+  border: 0;
+  border-radius: var(--xp-radius-button);
+  cursor: pointer;
+}
+
+.trayButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.trayButton:focus-visible {
+  outline: 1px dotted var(--xp-titlebar-text);
+}
+
+.clock {
+  font-size: var(--xp-font-size-chrome);
+  white-space: nowrap;
+  text-shadow: var(--xp-title-shadow);
+}
+
+/* Mobile: compact bar, window switcher, 44px touch targets (§9). */
+.switcher {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: var(--xp-space-1) 0;
+}
+
+.badge {
+  min-width: 20px;
+  padding: 0 var(--xp-space-2);
+  font-weight: bold;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.switcherMenu {
+  position: absolute;
+  inset: auto 0 calc(100% + var(--xp-space-2)) 0;
+  margin: 0;
+  padding: var(--xp-space-1);
+  list-style: none;
+  background: var(--xp-panel-bg);
+  border: 1px solid var(--xp-window-border);
+  border-radius: var(--xp-radius-button);
+  box-shadow: var(--xp-shadow-window-active);
+}
+
+.switcherItem {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-4);
+  width: 100%;
+  min-height: var(--xp-touch-target);
+  padding: 0 var(--xp-space-4);
+  font: inherit;
+  font-size: var(--xp-font-size-content);
+  color: var(--xp-text);
+  text-align: left;
+  background: none;
+  border: 0;
+}
+
+.switcherItem:hover,
+.switcherItem:focus-visible {
+  color: var(--xp-selection-text);
+  background: var(--xp-selection-bg);
+  outline: none;
+}
+
+@media (max-width: 767px) {
+  .start {
+    padding-right: var(--xp-space-5);
+  }
+
+  .trayButton {
+    min-width: var(--xp-touch-target);
+    min-height: var(--xp-touch-target);
+  }
+
+  .tray {
+    padding-left: 0;
+  }
+}

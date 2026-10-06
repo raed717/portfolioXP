@@ -1,0 +1,11 @@
+.desktop {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--xp-desktop-fallback);
+  background-position: center;
+  background-size: cover;
+  /* Prevent iOS rubber-banding and accidental text selection while dragging. */
+  overscroll-behavior: none;
+  user-select: none;
+}

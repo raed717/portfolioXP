@@ -1,0 +1,50 @@
+{
+  "education": [
+    {
+      "degree": "Software Engineering Degree",
+      "institution": "ESPRIT Engineering School",
+      "location": "Tunis, Tunisia",
+      "period": "2019 - 2024",
+      "description": "Computer science engineering degree completed with honors, including a capstone focused on AI-driven applications.",
+      "achievements": [
+        "Graduated with Honors",
+        "Capstone project on AI-driven applications",
+        "Strong foundation in software architecture and product delivery"
+      ]
+    },
+    {
+      "degree": "Baccalaureate in Science and Technology",
+      "institution": "Med Boudhina High School",
+      "location": "Hammamet, Tunisia",
+      "period": "2012 - 2017",
+      "description": "Science and technology track with strong preparation in mathematics, analysis, and engineering fundamentals.",
+      "achievements": [
+        "Graduated with strong academic performance",
+        "Built the discipline that led into engineering school"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Claude Code in Action",
+      "issuer": "Anthropic",
+      "date": "2026",
+      "credentialId": "ANTHROPIC123",
+      "link": "http://verify.skilljar.com/c/hv7iniuevkjv"
+    },
+    {
+      "name": "Python for Data Science, AI & Development",
+      "issuer": "IBM",
+      "date": "2025",
+      "credentialId": "IBM123456",
+      "link": "https://www.coursera.org/account/accomplishments/verify/FY2XF04CYLWB"
+    },
+    {
+      "name": "Degree in Computer Science Engineering",
+      "issuer": "ESPRIT",
+      "date": "2024",
+      "credentialId": "ESPRIT2024",
+      "link": ""
+    }
+  ]
+}

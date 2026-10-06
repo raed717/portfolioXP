@@ -1,0 +1,33 @@
+.page {
+  height: 100%;
+  overflow: auto;
+  background: var(--xp-panel-bg);
+  border: 1px solid var(--xp-panel-border);
+}
+
+.text {
+  margin: 0;
+  padding: var(--xp-space-3) var(--xp-space-4);
+  max-width: 80ch;
+  font-family: var(--xp-font-mono);
+  font-size: var(--xp-font-size-content);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.caret {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  background: var(--xp-text);
+  animation: caret-blink 1s steps(2, start) infinite;
+}
+
+@keyframes caret-blink {
+  to {
+    visibility: hidden;
+  }
+}

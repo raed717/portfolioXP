@@ -1,0 +1,102 @@
+{
+  "projects": [
+    {
+      "title": "SmarTown 3D GIS",
+      "description": "Web GIS platform for 2D and 3D map studies, spatial analytics, and asset intelligence.",
+      "technologies": ["Angular", "NestJS", "PostGIS", "GeoServer"],
+      "image": "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197504/cp_upbrqj.png",
+      "github": "#",
+      "detailsUrl": "smartown.html",
+      "github_available": false,
+      "live_available": false,
+      "details_available": true,
+      "detailImages": [
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197504/cp_upbrqj.png",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197502/smart1_h9epa8.jpg",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197505/smart2_at35zj.png",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197501/smart3_pby4tl.png",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197503/smart4_pnysqt.png",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197502/smart5_ypni0q.png",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197504/smart6_vwlsqv.png",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197504/smart7_chfvoe.png"
+      ],
+      "longDescription": "SmarTown 3D GIS is a comprehensive geospatial intelligence platform designed for municipal asset management, infrastructure planning, and advanced spatial analytics. Built to handle massive geospatial datasets, the system renders highly performant 2D vector layers and rich 3D digital twins in real time. It enables engineers, planners, and decision-makers to visualize spatial relationships, query infrastructure attributes, and perform site-suitability analysis directly in the browser.",
+      "features": [
+        "Interactive 3D digital twins with detailed mesh and terrain modeling.",
+        "Real-time asset intelligence and utility network mapping.",
+        "Advanced spatial querying (buffers, intersections, and proximity tools).",
+        "Performant rendering of massive point cloud and 3D tiles datasets.",
+        "Integrated geospatial workflows for municipal reporting and planning."
+      ],
+      "experienceCompany": "WOLO"
+    },
+    {
+      "title": "Mining Maps",
+      "description": "Advanced portfolio of interactive maps and spatial analytics for mining operations, asset management, and environmental monitoring.",
+      "technologies": ["Next.js", "Supabase"],
+      "image": "/images/miningmaps.png",
+      "live": "https://www.miningpropertymaps.com/",
+      "github_available": false,
+      "live_available": true,
+      "details_available": false
+    },
+    {
+      "title": "Albania Booking",
+      "description": "Booking platform for hotels, cars, and stays in Albania, currently evolving toward a richer travel workflow.",
+      "technologies": ["React", "Vite", "Supabase", "Stripe"],
+      "image": "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784199364/bookinalHomePage_nudmwf.jpg",
+      "github": "https://github.com/raed717/iron-log-94-main",
+      "live": "https://bookinal.com/",
+      "live_available": true,
+      "details_available": true,
+      "detailImages": [
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784199364/bookinalHomePage_nudmwf.jpg",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784199363/bookin_page_twnunk.png",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784199363/destinationPage_onwtyj.jpg",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784199494/paypalbookinal_givrd6.jpg",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784199363/dashboard_hmlhyy.jpg"
+      ],
+      "longDescription": "Albania Booking is a comprehensive travel platform designed to simplify the process of booking hotels, cars, stays in Albania and showing best destinations. It features an intuitive interface and integrates seamlessly with various service providers to offer users a wide range of options and competitive pricing."
+    },
+    {
+      "title": "Iron Log",
+      "description": "Workout tracking application focused on progress monitoring, consistency, and clean data-driven feedback.",
+      "technologies": ["React", "Vite", "Supabase"],
+      "image": "/images/ironlog.png",
+      "github": "https://github.com/raed717/iron-log-94-main",
+      "live": "https://iron-log-ruddy.vercel.app/",
+      "github_available": true,
+      "live_available": true
+    },
+    {
+      "title": "HR Assistant",
+      "description": "AI-assisted HR system for analyzing candidate profiles and interview performance with faster decision support.",
+      "technologies": [
+        "Angular",
+        "Node.js",
+        "MongoDB",
+        "Python",
+        "Flask",
+        "OpenAi",
+        "OpenCv",
+        "AssemblyAi"
+      ],
+      "image": "/images/HR2.png",
+      "github": "#",
+      "live": "https://drive.google.com/file/d/15kMv9-dVafyeSacB4qJ7fSd2EiHoJvE8/view?usp=drive_link",
+      "github_available": false,
+      "live_available": true,
+      "experienceCompany": "Inoteqia"
+    },
+    {
+      "title": "Job search engine",
+      "description": "Job discovery engine with recommendation logic for certificates, skills, and learning roadmaps.",
+      "technologies": ["Flask", "PydanticAi", "AiAgents"],
+      "image": "/images/Job_search_engine.png",
+      "github": "https://github.com/Keensight-AI-Building-Blocks/Meeting_Analayzer",
+      "live": "#",
+      "github_available": true,
+      "live_available": false
+    }
+  ]
+}

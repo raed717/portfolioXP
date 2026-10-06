@@ -1,0 +1,159 @@
+{
+  "person": {
+    "name": "Raed Guembri",
+    "role": "Software Architect Engineer",
+    "location": "Hammamet, Tunisia",
+    "github": "https://github.com/raed717",
+    "avatar": "https://res.cloudinary.com/dfytfu2jq/image/upload/v1782487035/wmremove-transformed_pwqd5z.png",
+    "tagline": "I design and ship full-stack systems where architecture, interface motion, and developer discipline work like one instrument.",
+    "summary": "From Web GIS platforms and AI-assisted recruitment tools to dashboards, automated quality systems, VPS deployments, and data-heavy products, I build software that feels fast, legible, observable, and ready to scale.",
+    "availability": "Open to software engineering, architecture, QA automation, and AI-integrated product work."
+  },
+  "skills": [
+    {
+      "title": "Backend and architecture",
+      "items": ["NestJS", "Node.js", "FastAPI", "Spring Boot", "Microservices", "REST APIs"]
+    },
+    {
+      "title": "Frontend systems",
+      "items": ["Angular", "React", "Vue.js", "Next.js", "Interactive dashboards", "GIS interfaces"]
+    },
+    {
+      "title": "Data and platform",
+      "items": [
+        "PostgreSQL",
+        "PostGIS",
+        "MongoDB",
+        "VPS deployment",
+        "Docker",
+        "Server monitoring",
+        "Kubernetes",
+        "GeoServer"
+      ]
+    },
+    {
+      "title": "Quality and AI",
+      "items": [
+        "Playwright",
+        "Prompt engineering",
+        "MCP workflows",
+        "AI tool integration",
+        "OpenCV",
+        "AssemblyAI"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Full Stack JS/TS Developer",
+      "company": "WOLO",
+      "location": "Tunis, Tunisia",
+      "period": "Apr 2025 - Present",
+      "summary": "Built a full-stack Web GIS platform with Angular and NestJS for spatial visualization, asset management, and map-heavy analysis workflows.",
+      "impact": "Improved performance, maintainability, and scalability through clean architecture, API versioning, optimized spatial data delivery, and production deployment monitoring.",
+      "tools": [
+        "Angular",
+        "NestJS",
+        "PostgreSQL",
+        "PostGIS",
+        "GeoServer",
+        "Leaflet",
+        "MongoDB",
+        "Docker",
+        "VPS"
+      ],
+      "highlights": [
+        "Designed a PostGIS schema optimized for fast spatial queries and geometry operations.",
+        "Configured GeoServer to publish WMS and WFS services for efficient map layer delivery.",
+        "Integrated Leaflet with custom controls, real-time editing, and dynamic spatial rendering.",
+        "Deployed applications to VPS environments with Docker and monitored both server health and application behavior in production.",
+        "Refined the overall system with cleaner contracts and more reliable data-fetching flows."
+      ]
+    },
+    {
+      "role": "QA Engineer Freelance",
+      "company": "Nexits",
+      "location": "Paris, France - Remote",
+      "period": "Jan 2025 - Apr 2025",
+      "summary": "Strengthened end-to-end testing for a React, Next.js, and PostgreSQL application with maintainable Playwright suites written in TypeScript.",
+      "impact": "Improved regression confidence and long-term test scalability across critical UI and API user flows.",
+      "tools": [
+        "Playwright",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "PostgreSQL",
+        "Object-oriented test architecture"
+      ],
+      "highlights": [
+        "Expanded comprehensive end-to-end coverage around business-critical journeys.",
+        "Created reusable page-object patterns that made tests easier to extend and maintain.",
+        "Automated fragile flows to reduce manual regression effort.",
+        "Raised reliability across complex UI and API interaction paths."
+      ]
+    },
+    {
+      "role": "Full-Stack and AI Engineer Intern",
+      "company": "Inoteqia",
+      "location": "Tunis, Tunisia",
+      "period": "Jan 2024 - Nov 2024",
+      "summary": "Planned and built a recruitment platform from scratch, combining full-stack delivery with AI-driven profile analysis and interview assessment.",
+      "impact": "Improved evaluation efficiency by 40% through automated skill matching, feedback processing, and decision-support scoring.",
+      "tools": [
+        "Angular",
+        "Node.js",
+        "Python",
+        "AI agents",
+        "Machine learning models",
+        "Scoring algorithms"
+      ],
+      "highlights": [
+        "Built the platform architecture to streamline hiring workflows from end to end.",
+        "Integrated AI analysis for candidate profiles and interview performance.",
+        "Implemented scalable APIs and robust data pipelines for real-time scoring.",
+        "Turned raw assessments into structured decision-support insights."
+      ]
+    },
+    {
+      "role": "Full-Stack JavaScript Developer (Apprenticeship)",
+      "company": "Nexits",
+      "location": "Paris, France - Remote",
+      "period": "Jun 2023 - Nov 2023",
+      "summary": "Delivered new B2B application features and an analytics dashboard that helped clients move faster through onboarding and daily operations.",
+      "impact": "Reduced onboarding time by around 10 hours per implementation cycle and cut reporting time by 30% with better dashboard flows.",
+      "tools": [
+        "Vue.js",
+        "JavaScript",
+        "MongoDB",
+        "Business analytics dashboards",
+        "Data visualization"
+      ],
+      "highlights": [
+        "Built an intuitive analytics dashboard for interactive operational metrics.",
+        "Integrated MongoDB for real-time data retrieval and visualization.",
+        "Improved product usability with cleaner component architecture.",
+        "Optimized data pipelines so decision-making happened faster."
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "name": "Arabic",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "Professional"
+    },
+    {
+      "name": "French",
+      "level": "Professional"
+    }
+  ],
+  "principles": [
+    "Design systems should feel intentional, not decorative. Every surface has a job.",
+    "Architecture matters most when it improves clarity, speed, and long-term changeability.",
+    "Testing is part of product confidence, not just a final checkpoint.",
+    "AI belongs inside useful workflows, never as empty spectacle."
+  ]
+}

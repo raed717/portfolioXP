@@ -1,0 +1,183 @@
+.window {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--xp-window-bg);
+  border: 3px solid var(--xp-titlebar-inactive-start);
+  border-top: 0;
+  border-radius: var(--xp-radius-window);
+  box-shadow: var(--xp-shadow-window-inactive);
+  outline: none;
+  animation: window-open 140ms ease-out;
+  transition:
+    transform 180ms ease-in,
+    opacity 180ms ease-in,
+    visibility 0s;
+}
+
+.active {
+  border-color: var(--xp-window-border);
+  box-shadow: var(--xp-shadow-window-active);
+}
+
+/* Minimize shrinks toward the taskbar; restore plays it in reverse (§5.1). */
+.minimized {
+  transform: translateY(70vh) scale(0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform 180ms ease-in,
+    opacity 180ms ease-in,
+    visibility 0s 180ms;
+}
+
+.fullscreen {
+  border-width: 0;
+  border-radius: 0;
+}
+
+.titlebar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--xp-space-2);
+  height: var(--xp-titlebar-height);
+  padding: 0 var(--xp-space-1) 0 var(--xp-space-3);
+  color: var(--xp-titlebar-text);
+  background: linear-gradient(
+    180deg,
+    var(--xp-titlebar-inactive-end) 0%,
+    var(--xp-titlebar-inactive-start) 14%,
+    var(--xp-titlebar-inactive-start) 75%,
+    var(--xp-titlebar-inactive-end) 100%
+  );
+  border-radius: var(--xp-radius-window);
+  cursor: default;
+  user-select: none;
+  touch-action: none;
+}
+
+.active .titlebar {
+  background: linear-gradient(
+    180deg,
+    var(--xp-titlebar-active-end) 0%,
+    var(--xp-titlebar-active-start) 14%,
+    var(--xp-titlebar-active-start) 75%,
+    var(--xp-titlebar-active-end) 100%
+  );
+}
+
+.fullscreen .titlebar {
+  border-radius: 0;
+}
+
+.titleIcon {
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--xp-font-size-ui);
+  font-weight: bold;
+  text-overflow: ellipsis;
+  text-shadow: var(--xp-title-shadow);
+  white-space: nowrap;
+}
+
+.controls {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--xp-space-1);
+}
+
+.control,
+.back {
+  display: grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  padding: 0;
+  color: var(--xp-titlebar-text);
+  background: linear-gradient(
+    180deg,
+    var(--xp-titlebar-active-end) 0%,
+    var(--xp-titlebar-active-start) 100%
+  );
+  border: 1px solid var(--xp-titlebar-text);
+  border-radius: var(--xp-radius-button);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+}
+
+.control:hover,
+.back:hover {
+  filter: brightness(1.15);
+}
+
+.control:active,
+.back:active {
+  filter: brightness(0.9);
+}
+
+.control:focus-visible,
+.back:focus-visible {
+  outline: 1px dotted var(--xp-titlebar-text);
+  outline-offset: -4px;
+}
+
+.close {
+  background: linear-gradient(180deg, var(--xp-close-red) 0%, var(--xp-error) 100%);
+}
+
+.window:not(.active) .control {
+  opacity: 0.75;
+}
+
+.body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  user-select: text;
+}
+
+.shield {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.loading {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--xp-text-muted);
+}
+
+@keyframes window-open {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+}
+
+/* Mobile: full-screen windows with large touch targets (§9). */
+@media (max-width: 767px) {
+  .control,
+  .back {
+    width: var(--xp-touch-target);
+    height: var(--xp-touch-target);
+  }
+
+  .titlebar {
+    padding-left: var(--xp-space-1);
+  }
+
+  .title {
+    font-size: var(--xp-font-size-content);
+  }
+}

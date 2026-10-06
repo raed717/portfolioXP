@@ -1,0 +1,302 @@
+.explorer {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: var(--xp-font-size-chrome);
+}
+
+/* ---------- Toolbar & address bar ---------- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-1);
+  padding: var(--xp-space-1) var(--xp-space-2);
+  border-bottom: 1px solid var(--xp-panel-border);
+}
+
+.tool {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-2);
+  padding: var(--xp-space-1) var(--xp-space-3);
+  font: inherit;
+  color: var(--xp-text);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--xp-radius-button);
+  cursor: pointer;
+}
+
+.tool:hover:not(:disabled) {
+  background: var(--xp-panel-bg);
+  border-color: var(--xp-panel-border);
+}
+
+.tool:disabled {
+  cursor: default;
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+
+.tool[aria-pressed="true"] {
+  background: var(--xp-button-active);
+  border-color: var(--xp-panel-border);
+}
+
+.tool:focus-visible {
+  outline: 1px dotted var(--xp-text);
+}
+
+.toolSeparator {
+  align-self: stretch;
+  width: 1px;
+  margin: 0 var(--xp-space-2);
+  background: var(--xp-panel-border);
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-3);
+  padding: var(--xp-space-2) var(--xp-space-3);
+  border-bottom: 1px solid var(--xp-panel-border);
+}
+
+.addressLabel {
+  color: var(--xp-text-muted);
+}
+
+.addressInput {
+  flex: 1;
+  min-width: 0;
+  padding: var(--xp-space-1) var(--xp-space-2);
+  font: inherit;
+  background: var(--xp-panel-bg);
+  border: 1px solid var(--xp-panel-border);
+}
+
+.addressInput:focus {
+  outline: 1px solid var(--xp-selection-bg);
+}
+
+.go {
+  padding: var(--xp-space-1) var(--xp-space-4);
+  font: inherit;
+  color: var(--xp-text);
+  background: linear-gradient(180deg, var(--xp-panel-bg), var(--xp-button-face));
+  border: 1px solid var(--xp-panel-border);
+  border-radius: var(--xp-radius-button);
+  cursor: pointer;
+}
+
+/* ---------- Task pane + content ---------- */
+.main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.tasks {
+  flex: 0 0 180px;
+  overflow-y: auto;
+  padding: var(--xp-space-5) var(--xp-space-4);
+  background: linear-gradient(
+    180deg,
+    var(--xp-startmenu-header-end),
+    var(--xp-titlebar-inactive-start)
+  );
+}
+
+.taskGroup {
+  margin-bottom: var(--xp-space-5);
+  overflow: hidden;
+  border-radius: var(--xp-radius-button) var(--xp-radius-button) 0 0;
+}
+
+.taskTitle {
+  margin: 0;
+  padding: var(--xp-space-2) var(--xp-space-4);
+  font-size: var(--xp-font-size-chrome);
+  font-weight: bold;
+  color: var(--xp-selection-bg);
+  background: linear-gradient(90deg, var(--xp-panel-bg), var(--xp-startmenu-right-bg));
+}
+
+.taskBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-1);
+  padding: var(--xp-space-3) var(--xp-space-4);
+  background: var(--xp-startmenu-right-bg);
+}
+
+.taskLink {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-3);
+  padding: var(--xp-space-1) 0;
+  font: inherit;
+  color: var(--xp-selection-bg);
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.taskLink:hover span {
+  text-decoration: underline;
+}
+
+.taskLink:focus-visible {
+  outline: 1px dotted var(--xp-text);
+}
+
+.detailName {
+  margin: 0;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.detailMeta {
+  margin: 0;
+  color: var(--xp-text-muted);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  padding: var(--xp-space-4);
+  background: var(--xp-panel-bg);
+}
+
+.empty {
+  margin: var(--xp-space-6);
+  color: var(--xp-text-muted);
+  font-size: var(--xp-font-size-ui);
+}
+
+/* ---------- Items: icons view ---------- */
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: var(--xp-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--xp-space-2);
+  padding: var(--xp-space-2);
+  text-align: center;
+  cursor: default;
+  user-select: none;
+}
+
+.name {
+  display: -webkit-box;
+  max-width: 100%;
+  padding: 0 var(--xp-space-1);
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.selected .name {
+  color: var(--xp-selection-text);
+  background: var(--xp-selection-bg);
+}
+
+.selected img {
+  opacity: 0.75;
+}
+
+.item:focus-visible {
+  outline: none;
+}
+
+.item:focus-visible .name {
+  outline: 1px dotted var(--xp-text);
+}
+
+/* ---------- Items: details view ---------- */
+.header,
+.details .item {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 2fr) minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: var(--xp-space-3);
+  text-align: left;
+}
+
+.header {
+  padding: var(--xp-space-1) var(--xp-space-2);
+  margin: calc(-1 * var(--xp-space-4)) calc(-1 * var(--xp-space-4)) var(--xp-space-2);
+  background: linear-gradient(180deg, var(--xp-panel-bg), var(--xp-button-face));
+  border-bottom: 1px solid var(--xp-panel-border);
+}
+
+.header span:first-child {
+  grid-column: 1 / 3;
+}
+
+.details .items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.details .item {
+  padding: var(--xp-space-1) var(--xp-space-2);
+}
+
+.details .name {
+  -webkit-line-clamp: 1;
+}
+
+.cell {
+  overflow: hidden;
+  color: var(--xp-text-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status {
+  display: flex;
+  gap: var(--xp-space-6);
+  padding: var(--xp-space-1) var(--xp-space-4);
+  color: var(--xp-text-muted);
+  border-top: 1px solid var(--xp-panel-border);
+}
+
+/* Narrow windows (and mobile) drop the task pane and toolbar labels. */
+@container (max-width: 560px) {
+  .tasks,
+  .toolLabel {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .tool,
+  .go {
+    min-width: var(--xp-touch-target);
+    min-height: var(--xp-touch-target);
+    justify-content: center;
+  }
+
+  .addressInput {
+    min-height: 36px;
+    font-size: 16px; /* Prevents iOS zoom on focus. */
+  }
+
+  .item {
+    min-height: var(--xp-touch-target);
+  }
+}

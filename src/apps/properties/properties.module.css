@@ -1,0 +1,92 @@
+.sheet {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-4);
+  padding: var(--xp-space-4);
+  font-size: var(--xp-font-size-chrome);
+}
+
+/* Keep long tabs scrollable inside an auto-sized dialog. */
+.sheet [role="tabpanel"] {
+  max-height: min(50vh, 360px);
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-5);
+}
+
+.name {
+  font-size: var(--xp-font-size-ui);
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.separator {
+  margin: var(--xp-space-4) 0;
+  border: 0;
+  border-top: 1px solid var(--xp-panel-border);
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-3);
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: var(--xp-space-3);
+}
+
+.row dt {
+  color: var(--xp-text-muted);
+}
+
+.row dd {
+  margin: 0;
+  word-break: break-word;
+}
+
+.long {
+  margin: var(--xp-space-4) 0 0;
+  font-size: var(--xp-font-size-ui);
+  line-height: 1.5;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xp-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: var(--xp-space-1) var(--xp-space-3);
+  background: var(--xp-startmenu-right-bg);
+  border: 1px solid var(--xp-startmenu-divider);
+  border-radius: var(--xp-radius-button);
+}
+
+.list {
+  margin: 0;
+  padding-left: var(--xp-space-6);
+  font-size: var(--xp-font-size-ui);
+  line-height: 1.5;
+  list-style: disc;
+}
+
+.link {
+  color: var(--xp-link);
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}

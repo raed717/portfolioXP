@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <!-- Original illustration: layered hills, winding path, lone tree, morning sun (THEME_CONTEXT §3.6). -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a63c9"/>
+      <stop offset=".6" stop-color="#7bb3ef"/>
+      <stop offset="1" stop-color="#d8ecfc"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="1520" cy="250" r="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff6cf"/>
+      <stop offset=".25" stop-color="#ffe9a0" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#ffe9a0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fbfa0"/>
+      <stop offset="1" stop-color="#5d9a74"/>
+    </linearGradient>
+    <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fca4f"/>
+      <stop offset="1" stop-color="#3f8d2b"/>
+    </linearGradient>
+    <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a6dc5e"/>
+      <stop offset="1" stop-color="#4a9a2a"/>
+    </linearGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3e2b0"/>
+      <stop offset="1" stop-color="#d9b977"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <circle cx="1520" cy="250" r="240" fill="url(#sun)"/>
+  <circle cx="1520" cy="250" r="58" fill="#fff8dc"/>
+
+  <!-- Flat, rounded clouds -->
+  <g fill="#ffffff" opacity=".92">
+    <path d="M260 250h300a40 40 0 0 0 0-80 60 60 0 0 0-110-30 50 50 0 0 0-90 20 45 45 0 0 0-100 90z"/>
+    <path d="M980 170h220a30 30 0 0 0 0-60 45 45 0 0 0-85-20 38 38 0 0 0-70 15 34 34 0 0 0-65 65z" opacity=".85"/>
+    <path d="M640 380h160a24 24 0 0 0 0-48 34 34 0 0 0-64-14 28 28 0 0 0-50 12 25 25 0 0 0-46 50z" opacity=".7"/>
+  </g>
+
+  <!-- Far ridge -->
+  <path d="M0 640 Q 240 540 480 600 T 960 580 T 1440 560 T 1920 590 V1080 H0z" fill="url(#far)"/>
+
+  <!-- Middle hill with field stripes -->
+  <path d="M0 760 C 300 620 640 640 900 700 S 1500 640 1920 700 V1080 H0z" fill="url(#mid)"/>
+  <g stroke="#9fd86c" stroke-width="6" fill="none" opacity=".45">
+    <path d="M1100 700 C 1300 680 1500 660 1920 720"/>
+    <path d="M1080 740 C 1300 720 1520 700 1920 760"/>
+    <path d="M1060 780 C 1300 760 1540 745 1920 800"/>
+  </g>
+
+  <!-- Near hill -->
+  <path d="M0 880 C 360 760 760 760 1080 830 C 1380 900 1660 880 1920 840 V1080 H0z" fill="url(#near)"/>
+
+  <!-- Winding path -->
+  <path d="M760 1080 C 800 980 640 940 760 880 S 940 800 900 760 S 860 720 930 700" fill="none" stroke="url(#path)" stroke-width="34" stroke-linecap="round" opacity=".9"/>
+
+  <!-- Lone tree on the middle hill -->
+  <g transform="translate(1260 610)">
+    <rect x="-7" y="10" width="14" height="70" rx="5" fill="#6b4a2a"/>
+    <circle cx="0" cy="0" r="44" fill="#3f8d2b"/>
+    <circle cx="-30" cy="18" r="30" fill="#3a8227"/>
+    <circle cx="30" cy="16" r="32" fill="#4a9a32"/>
+    <circle cx="-10" cy="-18" r="22" fill="#5aab3c" opacity=".8"/>
+  </g>
+</svg>

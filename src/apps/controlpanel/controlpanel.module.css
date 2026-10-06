@@ -1,0 +1,191 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-4);
+  height: 100%;
+  padding: var(--xp-space-4);
+  font-size: var(--xp-font-size-chrome);
+}
+
+.panel > :first-child {
+  flex: 1;
+  min-height: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-6);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xp-space-3);
+}
+
+.row button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--xp-space-2);
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  margin-bottom: var(--xp-space-3);
+  padding: 0;
+  font-weight: bold;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--xp-space-4);
+}
+
+.compact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-2);
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--xp-space-2);
+  padding: var(--xp-space-2);
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: var(--xp-radius-button);
+  cursor: pointer;
+}
+
+.compact .option {
+  flex-direction: row;
+  align-items: center;
+  padding: var(--xp-space-1) 0;
+  text-align: left;
+}
+
+.option:hover {
+  background: var(--xp-startmenu-right-bg);
+}
+
+.compact .option:hover {
+  background: none;
+}
+
+.options:not(.compact) .selected {
+  background: var(--xp-startmenu-right-bg);
+  border-color: var(--xp-selection-bg);
+}
+
+.option:has(input:focus-visible) {
+  outline: 1px dotted var(--xp-text);
+}
+
+.hiddenRadio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.wallpaper {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--xp-desktop-fallback);
+  background-position: center;
+  background-size: cover;
+  border: 1px solid var(--xp-panel-border);
+}
+
+.toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--xp-space-3);
+  cursor: pointer;
+}
+
+.toggle input {
+  margin-top: 1px;
+}
+
+.hint {
+  display: block;
+  margin-top: var(--xp-space-1);
+  color: var(--xp-text-muted);
+}
+
+/* ---------- Theme preview (uses the previewed skin's tokens) ---------- */
+.preview {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--xp-desktop-fallback);
+  border: 1px solid var(--xp-panel-border);
+}
+
+.previewWindow {
+  position: absolute;
+  inset: 12% 14% 26% 14%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--xp-window-bg);
+  border: 2px solid var(--xp-window-border);
+  border-top: 0;
+  border-radius: 4px 4px 0 0;
+}
+
+.previewTitle {
+  height: 22%;
+  background: linear-gradient(
+    180deg,
+    var(--xp-titlebar-active-end),
+    var(--xp-titlebar-active-start)
+  );
+}
+
+.previewBody {
+  flex: 1;
+  margin: 8%;
+  background: var(--xp-panel-bg);
+  border: 1px solid var(--xp-panel-border);
+}
+
+.previewTaskbar {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 14%;
+  background: linear-gradient(180deg, var(--xp-taskbar-start), var(--xp-taskbar-end));
+}
+
+.previewStart {
+  display: block;
+  width: 26%;
+  height: 100%;
+  background: var(--xp-start-green);
+  border-radius: 0 6px 6px 0;
+}
+
+@media (max-width: 767px) {
+  .option,
+  .toggle {
+    min-height: var(--xp-touch-target);
+  }
+}

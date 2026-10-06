@@ -1,0 +1,447 @@
+/* ---------- Shared ---------- */
+.boot,
+.standby,
+.bsod,
+.goodbye,
+.login,
+.screensaver {
+  position: fixed;
+  inset: 0;
+  z-index: var(--xp-z-overlay);
+}
+
+/* ---------- Screensaver (§7.6) ---------- */
+.screensaver {
+  overflow: hidden;
+  background: var(--xp-boot-bg);
+  cursor: none;
+}
+
+.screensaverLogo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-5);
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--xp-start-green-hover);
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* ---------- Boot (§4.1) ---------- */
+.boot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--xp-space-6);
+  padding: var(--xp-space-6);
+  color: var(--xp-titlebar-text);
+  background: var(--xp-boot-bg);
+  cursor: pointer;
+}
+
+.bootBrand {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-5);
+}
+
+.bootName {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+}
+
+.bootEdition {
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--xp-button-hover-glow);
+}
+
+.progress {
+  position: relative;
+  width: 160px;
+  height: 16px;
+  overflow: hidden;
+  border: 2px solid var(--xp-text-muted);
+  border-radius: 4px;
+}
+
+.progress span {
+  position: absolute;
+  top: 2px;
+  left: -30px;
+  width: 9px;
+  height: 8px;
+  background: linear-gradient(
+    180deg,
+    var(--xp-titlebar-active-end),
+    var(--xp-titlebar-active-start)
+  );
+  border-radius: 1px;
+  animation: progress-slide 1.6s linear infinite;
+}
+
+.progress span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.progress span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+@keyframes progress-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(200px);
+  }
+}
+
+.bootHint {
+  margin: 0;
+  font-size: var(--xp-font-size-ui);
+  color: var(--xp-text-muted);
+}
+
+.skip {
+  position: absolute;
+  right: var(--xp-space-6);
+  bottom: var(--xp-space-6);
+  min-height: var(--xp-touch-target);
+  padding: 0 var(--xp-space-5);
+  font: inherit;
+  color: var(--xp-titlebar-text);
+  text-decoration: underline;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* ---------- Login (§4.2) ---------- */
+.login {
+  display: grid;
+  grid-template-rows: 64px 1fr auto;
+  color: var(--xp-titlebar-text);
+  background: linear-gradient(180deg, var(--xp-login-bg-start), var(--xp-login-bg-end));
+}
+
+.loginBand {
+  background: var(--xp-taskbar-end);
+  border-bottom: 2px solid var(--xp-login-divider);
+}
+
+.loginMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--xp-space-6);
+  padding: var(--xp-space-6);
+  overflow-y: auto;
+}
+
+.loginBrand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 320px;
+  text-align: right;
+}
+
+.loginName {
+  margin: var(--xp-space-4) 0 0;
+  font-size: 28px;
+  text-shadow: var(--xp-title-shadow);
+}
+
+.loginRole {
+  margin: 0;
+  font-size: 14px;
+  color: var(--xp-login-accent);
+}
+
+.loginPrompt {
+  margin: var(--xp-space-6) 0 0;
+  font-size: 15px;
+}
+
+.loginDivider {
+  align-self: stretch;
+  width: 1px;
+  max-height: 320px;
+  margin: auto 0;
+  background: linear-gradient(180deg, transparent, var(--xp-login-divider), transparent);
+}
+
+.accounts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-5);
+  width: 100%;
+  min-width: 280px;
+  padding: var(--xp-space-3) var(--xp-space-5) var(--xp-space-3) var(--xp-space-3);
+  font: inherit;
+  color: var(--xp-titlebar-text);
+  text-align: left;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.account:hover,
+.account:focus-visible {
+  background: linear-gradient(90deg, var(--xp-taskbar-end), transparent);
+  outline: none;
+}
+
+.accountIcon {
+  border: 2px solid var(--xp-panel-bg);
+  border-radius: 5px;
+}
+
+.account:hover .accountIcon,
+.account:focus-visible .accountIcon {
+  border-color: var(--xp-login-accent);
+}
+
+.accountText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-1);
+}
+
+.accountText strong {
+  font-size: 18px;
+}
+
+.accountText small {
+  font-size: var(--xp-font-size-ui);
+  opacity: 0.9;
+}
+
+.loginFooter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--xp-space-4);
+  padding: var(--xp-space-4) var(--xp-space-6);
+  background: var(--xp-taskbar-end);
+  border-top: 2px solid var(--xp-login-accent);
+}
+
+.loginPower {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-3);
+  min-height: var(--xp-touch-target);
+  padding: 0 var(--xp-space-4);
+  font: inherit;
+  font-size: var(--xp-font-size-content);
+  color: var(--xp-titlebar-text);
+  background: none;
+  border: 0;
+  border-radius: var(--xp-radius-button);
+  cursor: pointer;
+}
+
+.loginPower:hover,
+.loginPower:focus-visible {
+  background: rgba(255, 255, 255, 0.15);
+  outline: none;
+}
+
+.quickView {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--xp-touch-target);
+  padding: 0 var(--xp-space-4);
+  font-size: var(--xp-font-size-content);
+  font-weight: bold;
+  color: var(--xp-titlebar-text);
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .login {
+    grid-template-rows: 24px 1fr auto;
+  }
+
+  .loginMain {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .loginBrand {
+    align-items: center;
+    text-align: center;
+  }
+
+  .loginDivider {
+    width: 100%;
+    margin: 0;
+    max-height: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--xp-login-divider), transparent);
+  }
+
+  .account {
+    min-width: 0;
+  }
+
+  .accounts {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+/* ---------- Stand By ---------- */
+.standby {
+  display: grid;
+  place-items: center;
+  padding: var(--xp-space-6);
+  color: var(--xp-text-muted);
+  text-align: center;
+  background: var(--xp-boot-bg);
+  cursor: pointer;
+}
+
+/* ---------- Blue screen easter egg (§7.5) ---------- */
+.bsod {
+  overflow-y: auto;
+  padding: var(--xp-space-6);
+  color: var(--xp-bsod-text);
+  background: var(--xp-bsod-bg);
+  cursor: pointer;
+}
+
+.bsodText {
+  max-width: 80ch;
+  margin: 8vh auto 0;
+  font-family: var(--xp-font-mono);
+  font-size: var(--xp-font-size-content-lg);
+  line-height: 1.5;
+}
+
+.bsodText p {
+  margin: 0 0 1em;
+}
+
+.bsodText a {
+  color: var(--xp-bsod-text);
+  text-decoration: underline;
+}
+
+.bsodBlink {
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* ---------- Goodbye (§4.4) ---------- */
+.goodbye {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--xp-space-5);
+  padding: var(--xp-space-6);
+  color: var(--xp-titlebar-text);
+  text-align: center;
+  background: linear-gradient(180deg, var(--xp-login-bg-start), var(--xp-login-bg-end));
+  font-size: var(--xp-font-size-content-lg);
+}
+
+.goodbyeTitle {
+  margin: 0;
+  font-size: 28px;
+  text-shadow: var(--xp-title-shadow);
+}
+
+.goodbye p {
+  margin: 0;
+}
+
+.goodbyeLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--xp-space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.goodbyeLinks a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--xp-touch-target);
+  font-weight: bold;
+  color: var(--xp-titlebar-text);
+  text-decoration: underline;
+}
+
+.powerOn {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-3);
+  min-height: var(--xp-touch-target);
+  margin-top: var(--xp-space-6);
+  padding: 0 var(--xp-space-6);
+  font: inherit;
+  color: var(--xp-titlebar-text);
+  background: var(--xp-start-green);
+  border: 1px solid var(--xp-panel-bg);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.powerOn:hover {
+  background: var(--xp-start-green-hover);
+}
+
+.powerOn:focus-visible {
+  outline: 1px dotted var(--xp-titlebar-text);
+  outline-offset: 2px;
+}
+
+/* ---------- Server-rendered loading fallback ---------- */
+.fallback {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--xp-space-5);
+  padding: var(--xp-space-6);
+  color: var(--xp-titlebar-text);
+  text-align: center;
+  background: var(--xp-boot-bg);
+}
+
+.fallback a {
+  color: var(--xp-titlebar-text);
+  text-decoration: underline;
+}

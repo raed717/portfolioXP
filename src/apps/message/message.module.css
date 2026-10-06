@@ -1,0 +1,27 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: var(--xp-space-5);
+  gap: var(--xp-space-5);
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--xp-space-5);
+}
+
+.text {
+  margin: 0;
+  font-size: var(--xp-font-size-ui);
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--xp-space-3);
+}

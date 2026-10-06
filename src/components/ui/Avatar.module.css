@@ -1,0 +1,8 @@
+.avatar {
+  flex-shrink: 0;
+  object-fit: cover;
+  background: var(--xp-startmenu-right-bg);
+  border: 2px solid var(--xp-panel-bg);
+  border-radius: 6px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.35);
+}
