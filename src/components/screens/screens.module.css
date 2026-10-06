@@ -445,3 +445,49 @@
   color: var(--xp-titlebar-text);
   text-decoration: underline;
 }
+
+.fallback {
+  overflow-y: auto;
+}
+
+.fallbackName {
+  margin: 0;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.fallbackRole {
+  margin: 0;
+  font-size: var(--xp-font-size-content-lg);
+  color: var(--xp-button-hover-glow);
+}
+
+.fallbackText {
+  max-width: 62ch;
+  margin: 0;
+  font-size: var(--xp-font-size-content);
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.fallbackLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--xp-space-3) var(--xp-space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fallbackLinks a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--xp-touch-target);
+}
+
+.fallbackStatus {
+  margin: 0;
+  font-size: var(--xp-font-size-ui);
+  color: var(--xp-text-muted);
+}

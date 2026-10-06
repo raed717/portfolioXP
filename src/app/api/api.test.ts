@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { createRateLimiter } from "@/lib/rateLimit";
-import { looksLikeBot, validateContact } from "@/lib/contact";
+import { cleanEnvAddress, looksLikeBot, validateContact } from "@/lib/contact";
 
 vi.mock("server-only", () => ({}));
 
@@ -31,6 +31,24 @@ describe("contact validation", () => {
     expect(looksLikeBot(valid)).toBe(false);
     expect(looksLikeBot({ ...valid, website: "spam.biz" })).toBe(true);
     expect(looksLikeBot({ ...valid, elapsedMs: 100 })).toBe(true);
+  });
+});
+
+describe("cleanEnvAddress", () => {
+  it("strips quotes and whitespace that hosting dashboards keep verbatim", () => {
+    expect(cleanEnvAddress('"Raed Guembri Portfolio <contact@guembri.tn>"')).toBe(
+      "Raed Guembri Portfolio <contact@guembri.tn>",
+    );
+    expect(cleanEnvAddress("  'contact@guembri.tn'\n")).toBe("contact@guembri.tn");
+    expect(cleanEnvAddress("Name <a@b.co>")).toBe("Name <a@b.co>");
+  });
+
+  it("rejects empty or malformed values", () => {
+    expect(cleanEnvAddress(undefined)).toBeNull();
+    expect(cleanEnvAddress("")).toBeNull();
+    expect(cleanEnvAddress('"')).toBeNull();
+    expect(cleanEnvAddress("Portfolio contact@guembri.tn")).toBeNull();
+    expect(cleanEnvAddress("Name <not-an-email>")).toBeNull();
   });
 });
 

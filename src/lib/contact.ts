@@ -47,6 +47,22 @@ export function validateContact(input: Partial<ContactInput>): ContactErrors {
   return errors;
 }
 
+const BARE_ADDRESS = String.raw`[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+`;
+const SENDER_RE = new RegExp(`^(?:${BARE_ADDRESS}|[^<>"]+\\s<${BARE_ADDRESS}>)$`);
+
+/**
+ * Normalizes an address from an environment variable. Hosting dashboards (e.g. Vercel) store
+ * values verbatim, so quotes copied from a .env file or stray whitespace end up in the value.
+ * Returns null when empty or not in `email@x.y` / `Name <email@x.y>` form.
+ */
+export function cleanEnvAddress(value: string | undefined): string | null {
+  const cleaned = value
+    ?.trim()
+    .replace(/^(["'])([\s\S]*)\1$/, "$2")
+    .trim();
+  return cleaned && SENDER_RE.test(cleaned) ? cleaned : null;
+}
+
 /** True when the submission looks automated (honeypot filled or submitted too fast). */
 export function looksLikeBot(input: Partial<ContactInput>): boolean {
   return Boolean(input.website) || (input.elapsedMs ?? 0) < MIN_FILL_MS;

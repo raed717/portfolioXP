@@ -15,16 +15,42 @@ import {
   projects,
   skills,
 } from "@/data";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { OG_DEFAULTS } from "@/lib/site";
+import { cvGraph } from "@/lib/structuredData";
 import styles from "./cv.module.css";
 
+const companies = [...new Set(experience.map((e) => e.company))].join(", ");
+const CV_TITLE = `CV — ${person.role}`;
+// Built from data so it stays true: who, where, employers, and headline skills (~155 chars).
+const CV_DESCRIPTION = `${person.name}'s CV: ${person.role} in ${person.location}. Experience at ${companies}. ${skills
+  .slice(0, 2)
+  .flatMap((g) => g.items.slice(0, 2))
+  .join(", ")} and more.`;
+
 export const metadata: Metadata = {
-  title: `${person.name} — CV`,
-  description: `${person.role}. ${person.tagline}`,
+  title: CV_TITLE,
+  description: CV_DESCRIPTION,
+  alternates: { canonical: "/cv" },
+  openGraph: {
+    ...OG_DEFAULTS,
+    type: "profile",
+    url: "/cv",
+    title: `${CV_TITLE} | ${person.name}`,
+    description: CV_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${CV_TITLE} | ${person.name}`,
+    description: CV_DESCRIPTION,
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function CvPage() {
   return (
     <main className={styles.page}>
+      <JsonLd data={cvGraph()} />
       <header className={styles.header}>
         <div className={styles.identity}>
           <Avatar size={72} />

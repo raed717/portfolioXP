@@ -4,7 +4,7 @@
  * Nothing is stored. Without RESEND_API_KEY: logs in development, 503 in production.
  */
 import { CONTACT_PRIVATE } from "@/data/server/contact";
-import { looksLikeBot, validateContact, type ContactInput } from "@/lib/contact";
+import { cleanEnvAddress, looksLikeBot, validateContact, type ContactInput } from "@/lib/contact";
 import { createRateLimiter } from "@/lib/rateLimit";
 
 const limiter = createRateLimiter({ limit: 5, windowMs: 10 * 60 * 1000 });
@@ -49,12 +49,27 @@ export async function POST(request: Request) {
     );
   }
 
+  // Empty or malformed env values fall back (to) or fail loudly in the logs (from).
+  const from = process.env.CONTACT_FROM_EMAIL
+    ? cleanEnvAddress(process.env.CONTACT_FROM_EMAIL)
+    : "Portfolio <onboarding@resend.dev>";
+  const to = cleanEnvAddress(process.env.CONTACT_TO_EMAIL) ?? CONTACT_PRIVATE.email;
+  if (!from) {
+    console.error(
+      "[contact] CONTACT_FROM_EMAIL is invalid. Use `Name <email@domain>` or `email@domain`, without quotes.",
+    );
+    return Response.json(
+      { error: "The mail server is misconfigured. Please reach out on GitHub instead." },
+      { status: 503 },
+    );
+  }
+
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      from: process.env.CONTACT_FROM_EMAIL ?? "Portfolio <onboarding@resend.dev>",
-      to: [process.env.CONTACT_TO_EMAIL ?? CONTACT_PRIVATE.email],
+      from,
+      to: [to],
       reply_to: email,
       subject,
       text: `From: ${name} <${email}>\n\n${message}`,

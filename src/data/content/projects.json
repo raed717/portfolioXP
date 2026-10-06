@@ -38,7 +38,13 @@
       "live": "https://www.miningpropertymaps.com/",
       "github_available": false,
       "live_available": true,
-      "details_available": false
+      "details_available": true,
+      "detailImages": [
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1791292656/hero_r74rum.png",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1791292955/map_wad4nl.png",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1791292956/Capture_d_%C3%A9cran_2026-10-06_141845_nowbsa.png",
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1791292956/Capture_d_%C3%A9cran_2026-10-06_142200_bzyvbn.png"
+      ]
     },
     {
       "title": "Albania Booking",

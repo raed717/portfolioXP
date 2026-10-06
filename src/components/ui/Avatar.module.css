@@ -6,3 +6,12 @@
   border-radius: 6px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.35);
 }
+
+.fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--xp-titlebar-text);
+  background: linear-gradient(180deg, var(--xp-start-green-hover), var(--xp-titlebar-active-start));
+}
