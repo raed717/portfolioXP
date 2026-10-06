@@ -1,6 +1,37 @@
 import type { NextConfig } from "next";
+import projectsJson from "./src/data/content/projects.json";
 
 const CANONICAL_HOST = "raed.guembri.tn";
+
+/** Origins Web Voyager may frame: live demos flagged available in projects.json, plus Drive previews. */
+const frameOrigins = [
+  ...new Set([
+    "https://drive.google.com",
+    ...projectsJson.projects
+      .filter((p) => p.live_available === true && p.live && p.live !== "#")
+      .map((p) => new URL(p.live as string).origin),
+  ]),
+];
+
+/**
+ * Production CSP. 'unsafe-inline' scripts are required by Next's inline bootstrap without nonces
+ * (nonces would force every page to render dynamically); everything else is locked to known origins.
+ */
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://res.cloudinary.com",
+  "font-src 'self' data:",
+  "connect-src 'self'",
+  "media-src 'self'",
+  "object-src 'self'",
+  `frame-src 'self' ${frameOrigins.join(" ")}`,
+  "frame-ancestors 'self'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "upgrade-insecure-requests",
+].join("; ");
 
 const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
@@ -34,8 +65,13 @@ const nextConfig: NextConfig = {
   },
 
   async headers() {
+    // Dev needs eval for React Refresh, so the CSP is production-only.
+    const csp =
+      process.env.NODE_ENV === "production"
+        ? [{ key: "Content-Security-Policy", value: contentSecurityPolicy }]
+        : [];
     return [
-      { source: "/:path*", headers: securityHeaders },
+      { source: "/:path*", headers: [...securityHeaders, ...csp] },
       // Vercel preview/deployment URLs must never compete with the real domain in search.
       {
         source: "/:path*",

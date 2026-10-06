@@ -448,6 +448,8 @@
 
 .fallback {
   overflow-y: auto;
+  /* "safe" keeps the top reachable when the intro is taller than the screen. */
+  justify-content: safe center;
 }
 
 .fallbackName {
@@ -468,6 +470,37 @@
   font-size: var(--xp-font-size-content);
   line-height: 1.5;
   opacity: 0.85;
+}
+
+.fallbackColumns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--xp-space-5) var(--xp-space-6);
+  width: min(760px, 100%);
+  text-align: left;
+}
+
+.fallbackHeading {
+  margin: 0 0 var(--xp-space-2);
+  font-size: var(--xp-font-size-content);
+  font-weight: bold;
+  color: var(--xp-button-hover-glow);
+}
+
+.fallbackList {
+  margin: 0;
+  padding-left: var(--xp-space-6);
+  font-size: var(--xp-font-size-ui);
+  line-height: 1.6;
+  list-style: disc;
+  opacity: 0.85;
+}
+
+.fallbackSkills {
+  margin: var(--xp-space-3) 0 0;
+  font-size: var(--xp-font-size-chrome);
+  line-height: 1.5;
+  opacity: 0.7;
 }
 
 .fallbackLinks {

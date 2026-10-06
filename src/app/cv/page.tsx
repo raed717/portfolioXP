@@ -109,7 +109,7 @@ export default function CvPage() {
       <section aria-labelledby="projects">
         <h2 id="projects">Projects</h2>
         {projects.map((p) => (
-          <article key={p.slug} className={styles.item}>
+          <article key={p.slug} id={p.slug} className={styles.item}>
             <h3>{p.title}</h3>
             <p>{p.description}</p>
             <p className={styles.meta}>{p.technologies.join(" · ")}</p>
