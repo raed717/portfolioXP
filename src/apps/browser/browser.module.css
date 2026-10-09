@@ -42,6 +42,47 @@
   flex: 1;
 }
 
+.modeSwitch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  background: var(--xp-panel-bg);
+  border: 1px solid var(--xp-panel-border);
+  border-radius: var(--xp-radius-button);
+}
+
+.modeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font: inherit;
+  font-size: var(--xp-font-size-chrome);
+  color: var(--xp-text);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.modeBtn:hover:not(.modeBtnActive) {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: var(--xp-panel-border);
+}
+
+.modeBtnActive {
+  font-weight: bold;
+  color: var(--xp-text);
+  background: linear-gradient(180deg, #ffffff, var(--xp-button-face));
+  border-color: var(--xp-panel-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.modeBtn:focus-visible {
+  outline: 1px dotted var(--xp-text);
+}
+
 .newTab {
   padding: var(--xp-space-1) var(--xp-space-3);
   color: var(--xp-link);
@@ -179,14 +220,70 @@
   background: var(--xp-panel-bg);
   border: 1px solid var(--xp-panel-border);
   border-radius: var(--xp-radius-button);
-  cursor: pointer;
 }
 
 .card:hover,
-.card:focus-visible {
+.card:focus-within {
   border-color: var(--xp-selection-bg);
   box-shadow: 0 0 0 2px var(--xp-button-hover-glow);
-  outline: none;
+}
+
+.cardCover {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-2);
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.cardCover:focus-visible {
+  outline: 1px dotted var(--xp-text);
+  outline-offset: 2px;
+}
+
+.cardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xp-space-2);
+  margin-top: auto;
+  padding-top: var(--xp-space-2);
+}
+
+.choiceBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  font: inherit;
+  font-size: var(--xp-font-size-chrome);
+  color: var(--xp-text);
+  background: linear-gradient(180deg, var(--xp-panel-bg), var(--xp-button-face));
+  border: 1px solid var(--xp-panel-border);
+  border-radius: var(--xp-radius-button);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.1s ease;
+}
+
+.choiceBtn:hover {
+  background: linear-gradient(180deg, #ffffff, var(--xp-button-face));
+  border-color: var(--xp-selection-bg);
+  box-shadow: 0 0 0 1px var(--xp-button-hover-glow);
+}
+
+.choiceBtn:active {
+  background: var(--xp-button-face);
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.choiceBtn:focus-visible {
+  outline: 1px dotted var(--xp-text);
 }
 
 .cardImage {
@@ -212,7 +309,6 @@
 }
 
 .cardHost {
-  margin-top: auto;
   color: var(--xp-success);
 }
 
@@ -256,10 +352,45 @@
   font-weight: bold;
 }
 
+.noticeActions {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-4);
+  margin-top: var(--xp-space-3);
+  flex-wrap: wrap;
+}
+
 .noticeLink {
   font-weight: bold;
   color: var(--xp-link);
   text-decoration: underline;
+}
+
+.noticeVideoBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font: inherit;
+  font-weight: bold;
+  font-size: var(--xp-font-size-ui);
+  color: var(--xp-text);
+  background: linear-gradient(180deg, var(--xp-panel-bg), var(--xp-button-face));
+  border: 1px solid var(--xp-panel-border);
+  border-radius: var(--xp-radius-button);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.noticeVideoBtn:hover {
+  background: linear-gradient(180deg, #ffffff, var(--xp-button-face));
+  border-color: var(--xp-selection-bg);
+  box-shadow: 0 0 0 1px var(--xp-button-hover-glow);
+}
+
+.noticeVideoBtn:active {
+  background: var(--xp-button-face);
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 767px) {
@@ -267,6 +398,12 @@
   .go {
     min-width: var(--xp-touch-target);
     min-height: var(--xp-touch-target);
+  }
+
+  .choiceBtn,
+  .modeBtn,
+  .noticeVideoBtn {
+    min-height: 32px;
   }
 
   .addressInput {

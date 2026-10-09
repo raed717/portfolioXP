@@ -38,4 +38,27 @@ describe("normalizeProject", () => {
     expect(p.liveUrl).toBe("https://x.dev");
     expect(p.screenshots).toEqual(["/x.png"]);
   });
+
+  it("normalizes videoUrl from raw video or falls back to null", () => {
+    const withVideo = normalizeProject({
+      ...base,
+      github: "#",
+      video: "https://example.com/demo.mp4",
+    });
+    expect(withVideo.videoUrl).toBe("https://example.com/demo.mp4");
+
+    const withoutVideo = normalizeProject({
+      ...base,
+      github: "#",
+    });
+    expect(withoutVideo.videoUrl).toBeNull();
+
+    const videoDisabled = normalizeProject({
+      ...base,
+      github: "#",
+      video: "https://example.com/demo.mp4",
+      video_available: false,
+    });
+    expect(videoDisabled.videoUrl).toBeNull();
+  });
 });

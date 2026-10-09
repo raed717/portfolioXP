@@ -41,6 +41,7 @@ export function normalizeProject(raw: RawProject): Project {
     features: raw.features ?? [],
     githubUrl: usableUrl(raw.github, raw.github_available),
     liveUrl: usableUrl(raw.live, raw.live_available),
+    videoUrl: raw.video && raw.video_available !== false ? raw.video : null,
     role: job ? `${job.role} at ${job.company}` : null,
     period: job?.period ?? null,
     results: job?.impact ?? null,

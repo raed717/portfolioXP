@@ -24,7 +24,7 @@ const contentSecurityPolicy = [
   "img-src 'self' data: blob: https://res.cloudinary.com",
   "font-src 'self' data:",
   "connect-src 'self'",
-  "media-src 'self'",
+  "media-src 'self' https://res.cloudinary.com",
   "object-src 'self'",
   `frame-src 'self' ${frameOrigins.join(" ")}`,
   "frame-ancestors 'self'",

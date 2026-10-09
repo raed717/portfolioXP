@@ -7,8 +7,11 @@
       "image": "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197504/cp_upbrqj.png",
       "github": "#",
       "detailsUrl": "smartown.html",
+      "live": "https://smartown.net/",
+      "video": "https://res.cloudinary.com/dfytfu2jq/video/upload/v1791537471/smartown-tour_xcddi6.mp4",
       "github_available": false,
-      "live_available": false,
+      "live_available": true,
+      "video_available": true,
       "details_available": true,
       "detailImages": [
         "https://res.cloudinary.com/dfytfu2jq/image/upload/v1784197504/cp_upbrqj.png",

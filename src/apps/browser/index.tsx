@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 import type { AppProps } from "@/apps/types";
 import { Icon } from "@/components/ui/Icon";
 import { fsRoot } from "@/data/fs";
@@ -11,6 +12,7 @@ import {
   demoFor,
   hostOf,
   isAllowed,
+  isVideoUrl,
   normalizeInput,
   toEmbedUrl,
 } from "@/lib/browser";
@@ -43,11 +45,22 @@ export default function BrowserApp({ windowId, params }: AppProps) {
   }));
   const [reloadKey, setReloadKey] = useState(0);
   const url = history.stack[history.index];
+  const demo = demoFor(url);
+  const isVideo = isVideoUrl(url);
 
   function show(next: History) {
     setHistory(next);
     const target = next.stack[next.index];
-    const title = target === HOME_URL ? "Favorites" : (demoFor(target)?.title ?? hostOf(target));
+    const targetDemo = demoFor(target);
+    const isVid = isVideoUrl(target);
+    const title =
+      target === HOME_URL
+        ? "Favorites"
+        : targetDemo
+          ? isVid && targetDemo.liveUrl
+            ? `${targetDemo.title} (Video Tour)`
+            : targetDemo.title
+          : hostOf(target);
     update(windowId, { title: `${title} - Web Voyager`, params: { url: target } });
   }
 
@@ -81,6 +94,28 @@ export default function BrowserApp({ windowId, params }: AppProps) {
         <ToolButton icon="restart" label="Refresh" onClick={() => setReloadKey((k) => k + 1)} />
         <ToolButton icon="logo" label="Home" onClick={() => navigate(HOME_URL)} />
         <span className={styles.separator} aria-hidden />
+        {demo && demo.liveUrl && demo.videoUrl && (
+          <div className={styles.modeSwitch} role="group" aria-label="Demo view switcher">
+            <button
+              type="button"
+              className={clsx(styles.modeBtn, !isVideo && styles.modeBtnActive)}
+              onClick={() => navigate(demo.liveUrl!)}
+              title={`View live production site (${hostOf(demo.liveUrl!)})`}
+            >
+              <Icon name="browser" size={16} />
+              <span>Live Site</span>
+            </button>
+            <button
+              type="button"
+              className={clsx(styles.modeBtn, isVideo && styles.modeBtnActive)}
+              onClick={() => navigate(demo.videoUrl!)}
+              title="Watch demo video tour"
+            >
+              <Icon name="views" size={16} />
+              <span>Demo Video</span>
+            </button>
+          </div>
+        )}
         {url !== HOME_URL && (
           <a className={styles.newTab} href={url} target="_blank" rel="noopener noreferrer">
             Open in new tab
@@ -101,7 +136,7 @@ export default function BrowserApp({ windowId, params }: AppProps) {
             url={url}
           />
         ) : (
-          <EmbeddedPage key={`${url}#${reloadKey}`} url={url} />
+          <EmbeddedPage key={`${url}#${reloadKey}`} url={url} onNavigate={navigate} />
         )}
       </div>
     </div>
@@ -166,18 +201,71 @@ function HomePage({ onOpen }: { onOpen: (url: string) => void }) {
         Live demos of things I&apos;ve built. Pick one to take it for a spin.
       </p>
       <ul className={styles.cards}>
-        {DEMOS.map((demo) => (
-          <li key={demo.slug}>
-            <button type="button" className={styles.card} onClick={() => onOpen(demo.url)}>
-              <span className={styles.cardImage}>
-                <Image src={demo.cover} alt="" fill sizes="(max-width: 767px) 100vw, 280px" />
-              </span>
-              <span className={styles.cardTitle}>{demo.title}</span>
-              <span className={styles.cardText}>{demo.description}</span>
-              <span className={styles.cardHost}>{hostOf(demo.url)}</span>
-            </button>
-          </li>
-        ))}
+        {DEMOS.map((demo) => {
+          const hasBoth = Boolean(demo.liveUrl && demo.videoUrl);
+          return (
+            <li key={demo.slug}>
+              <div className={styles.card}>
+                <button
+                  type="button"
+                  className={styles.cardCover}
+                  onClick={() => onOpen(demo.url)}
+                  aria-label={`Open ${demo.title}`}
+                >
+                  <span className={styles.cardImage}>
+                    <Image src={demo.cover} alt="" fill sizes="(max-width: 767px) 100vw, 280px" />
+                  </span>
+                  <span className={styles.cardTitle}>{demo.title}</span>
+                  <span className={styles.cardText}>{demo.description}</span>
+                </button>
+                <div className={styles.cardActions}>
+                  {hasBoth ? (
+                    <>
+                      <button
+                        type="button"
+                        className={styles.choiceBtn}
+                        onClick={() => onOpen(demo.liveUrl!)}
+                        title={`Open live site (${hostOf(demo.liveUrl!)})`}
+                      >
+                        <Icon name="browser" size={16} />
+                        <span>Live Site</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.choiceBtn}
+                        onClick={() => onOpen(demo.videoUrl!)}
+                        title="Watch demo video tour"
+                      >
+                        <Icon name="views" size={16} />
+                        <span>Demo Video</span>
+                      </button>
+                    </>
+                  ) : demo.videoUrl ? (
+                    <button
+                      type="button"
+                      className={styles.choiceBtn}
+                      onClick={() => onOpen(demo.videoUrl!)}
+                      title="Watch demo video tour"
+                    >
+                      <Icon name="views" size={16} />
+                      <span>Demo Video</span>
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      className={styles.choiceBtn}
+                      onClick={() => onOpen(demo.liveUrl!)}
+                      title={`Open live site (${hostOf(demo.liveUrl!)})`}
+                    >
+                      <Icon name="browser" size={16} />
+                      <span className={styles.cardHost}>{hostOf(demo.liveUrl!)}</span>
+                    </button>
+                  )}
+                </div>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
@@ -185,12 +273,17 @@ function HomePage({ onOpen }: { onOpen: (url: string) => void }) {
 
 type EmbedState = "checking" | "embeddable" | "blocked";
 
-function EmbeddedPage({ url }: { url: string }) {
+function EmbeddedPage({ url, onNavigate }: { url: string; onNavigate: (url: string) => void }) {
   const [state, setState] = useState<EmbedState>("checking");
   const [loaded, setLoaded] = useState(false);
   const demo = demoFor(url);
+  const isVideo = isVideoUrl(url);
 
   useEffect(() => {
+    if (isVideo) {
+      setState("embeddable");
+      return;
+    }
     let cancelled = false;
     fetch(`/api/embed-check?url=${encodeURIComponent(url)}`)
       .then((r) => r.json() as Promise<{ embeddable?: boolean }>)
@@ -199,7 +292,7 @@ function EmbeddedPage({ url }: { url: string }) {
     return () => {
       cancelled = true;
     };
-  }, [url]);
+  }, [url, isVideo]);
 
   if (state === "blocked") {
     return (
@@ -209,6 +302,8 @@ function EmbeddedPage({ url }: { url: string }) {
         text="The site doesn't allow being shown inside other pages, so here's a preview instead."
         url={url}
         image={demo?.cover}
+        videoUrl={demo?.videoUrl}
+        onWatchVideo={demo?.videoUrl ? () => onNavigate(demo.videoUrl!) : undefined}
       />
     );
   }
@@ -223,22 +318,42 @@ function EmbeddedPage({ url }: { url: string }) {
           Opening {hostOf(url)}…
         </div>
       )}
-      {state === "embeddable" && (
-        <iframe
-          className={styles.frame}
-          src={toEmbedUrl(url)}
-          title={demo?.title ?? hostOf(url)}
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allow="fullscreen"
-          onLoad={() => setLoaded(true)}
-        />
-      )}
+      {state === "embeddable" &&
+        (isVideo ? (
+          <video
+            className={styles.frame}
+            src={url}
+            controls
+            autoPlay
+            playsInline
+            onLoadedData={() => setLoaded(true)}
+            title={demo?.title ?? hostOf(url)}
+            style={{ objectFit: "contain", backgroundColor: "#000" }}
+          />
+        ) : (
+          <iframe
+            className={styles.frame}
+            src={toEmbedUrl(url)}
+            title={demo?.title ?? hostOf(url)}
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allow="fullscreen"
+            onLoad={() => setLoaded(true)}
+          />
+        ))}
     </>
   );
 }
 
-function Notice(props: { icon: string; title: string; text: string; url: string; image?: string }) {
+function Notice(props: {
+  icon: string;
+  title: string;
+  text: string;
+  url: string;
+  image?: string;
+  videoUrl?: string | null;
+  onWatchVideo?: () => void;
+}) {
   return (
     <div className={styles.notice}>
       {props.image && (
@@ -251,14 +366,26 @@ function Notice(props: { icon: string; title: string; text: string; url: string;
         <div>
           <h2 className={styles.noticeTitle}>{props.title}</h2>
           <p>{props.text}</p>
-          <a
-            className={styles.noticeLink}
-            href={props.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open {hostOf(props.url)} in a new tab
-          </a>
+          <div className={styles.noticeActions}>
+            <a
+              className={styles.noticeLink}
+              href={props.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open {hostOf(props.url)} in a new tab
+            </a>
+            {props.videoUrl && props.onWatchVideo && (
+              <button
+                type="button"
+                className={styles.noticeVideoBtn}
+                onClick={props.onWatchVideo}
+              >
+                <Icon name="views" size={16} />
+                <span>Watch Demo Video instead</span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

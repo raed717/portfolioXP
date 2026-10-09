@@ -6,22 +6,32 @@ import { projects } from "@/data";
 
 export const HOME_URL = "about:home";
 
-export type Demo = { slug: string; title: string; description: string; url: string; cover: string };
+export type Demo = {
+  slug: string;
+  title: string;
+  description: string;
+  url: string;
+  cover: string;
+  liveUrl: string | null;
+  videoUrl: string | null;
+};
 
-/** Projects with a live demo, shown on the browser's home page. */
+/** Projects with a live demo or video, shown on the browser's home page. */
 export const DEMOS: Demo[] = projects
-  .filter((p) => p.liveUrl)
+  .filter((p) => p.liveUrl || p.videoUrl)
   .map((p) => ({
     slug: p.slug,
     title: p.title,
     description: p.description,
-    url: p.liveUrl!,
+    url: p.liveUrl ?? p.videoUrl!,
     cover: p.cover,
+    liveUrl: p.liveUrl,
+    videoUrl: p.videoUrl,
   }));
 
 const ALLOWED = new Set(
   projects
-    .flatMap((p) => [p.liveUrl, p.githubUrl])
+    .flatMap((p) => [p.liveUrl, p.githubUrl, p.videoUrl])
     .filter(Boolean)
     .map((u) => normalize(u!)),
 );
@@ -39,6 +49,10 @@ export function isAllowed(url: string): boolean {
   return ALLOWED.has(normalize(url));
 }
 
+export function isVideoUrl(url: string): boolean {
+  return /\.(mp4|webm|ogg)(\?.*)?$/i.test(url) || url.includes("/video/upload/");
+}
+
 /** Adds https:// to bare hosts typed in the address bar. */
 export function normalizeInput(input: string): string {
   const trimmed = input.trim();
@@ -53,7 +67,13 @@ export function toEmbedUrl(url: string): string {
 }
 
 export function demoFor(url: string): Demo | undefined {
-  return DEMOS.find((d) => normalize(d.url) === normalize(url));
+  const norm = normalize(url);
+  return DEMOS.find(
+    (d) =>
+      normalize(d.url) === norm ||
+      (d.liveUrl !== null && normalize(d.liveUrl) === norm) ||
+      (d.videoUrl !== null && normalize(d.videoUrl) === norm),
+  );
 }
 
 export function hostOf(url: string): string {

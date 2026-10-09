@@ -27,7 +27,7 @@ function bullets(items: string[]): string {
 
 /** README per §6.2. Fields with no source data are omitted rather than invented (§15.5). */
 function projectReadme(p: Project): string {
-  const links = [p.githubUrl, p.liveUrl].filter(Boolean).join(", ");
+  const links = [p.githubUrl, p.liveUrl, p.videoUrl].filter(Boolean).join(", ");
   return lines(
     `PROJECT:   ${p.title}`,
     p.role && `ROLE:      ${p.role}`,
@@ -56,12 +56,12 @@ function projectFolder(p: Project): FolderNode {
     folder("screenshots", p.screenshots.map(screenshotFile)),
     textFile("stack.ini", stackIni(p)),
   ];
-  if (p.liveUrl || p.githubUrl) {
+  if (p.liveUrl || p.githubUrl || p.videoUrl) {
     children.push({
       type: "file",
       name: "demo.exe",
       ext: "exe",
-      meta: { url: p.liveUrl ?? p.githubUrl, repo: p.githubUrl, projectSlug: p.slug },
+      meta: { url: p.liveUrl ?? p.videoUrl ?? p.githubUrl, repo: p.githubUrl, projectSlug: p.slug },
     });
   }
   return { ...folder(p.title, children), meta: { projectSlug: p.slug } };

@@ -62,9 +62,11 @@ export type RawProject = {
   image: string;
   github: string;
   live?: string;
+  video?: string;
   detailsUrl?: string;
   github_available?: boolean;
   live_available?: boolean;
+  video_available?: boolean;
   details_available?: boolean;
   detailImages?: string[];
   longDescription?: string;
@@ -85,6 +87,7 @@ export type Project = {
   features: string[];
   githubUrl: string | null;
   liveUrl: string | null;
+  videoUrl: string | null;
   /** From the linked experience entry, when there is one. */
   role: string | null;
   period: string | null;

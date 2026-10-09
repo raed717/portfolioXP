@@ -135,6 +135,11 @@ function projectTabs(project: Project, path: string): Tab[] {
         <Row label="Live demo">
           {project.liveUrl ? <ExternalLink href={project.liveUrl} /> : "No public demo"}
         </Row>
+        {project.videoUrl && (
+          <Row label="Demo video">
+            <ExternalLink href={project.videoUrl} />
+          </Row>
+        )}
       </dl>
     ),
   });

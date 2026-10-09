@@ -3,7 +3,7 @@
  * Browsers don't expose X-Frame-Options to scripts, so the server peeks at the headers.
  * Only allow-listed project URLs are fetched (no open proxy / SSRF). Results are cached.
  */
-import { isAllowed, toEmbedUrl } from "@/lib/browser";
+import { isAllowed, isVideoUrl, toEmbedUrl } from "@/lib/browser";
 
 const cache = new Map<string, { embeddable: boolean; expires: number }>();
 const TTL_MS = 60 * 60 * 1000;
@@ -27,6 +27,7 @@ function framingAllowed(headers: Headers, origin: string): boolean {
 export async function GET(request: Request) {
   const url = new URL(request.url).searchParams.get("url") ?? "";
   if (!isAllowed(url)) return Response.json({ error: "Not an allowed URL." }, { status: 400 });
+  if (isVideoUrl(url)) return Response.json({ embeddable: true });
 
   const target = toEmbedUrl(url);
   const cached = cache.get(target);
