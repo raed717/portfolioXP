@@ -113,11 +113,16 @@ export default function CvPage() {
             <h3>{p.title}</h3>
             <p>{p.description}</p>
             <p className={styles.meta}>{p.technologies.join(" · ")}</p>
-            {(p.liveUrl || p.githubUrl) && (
+            {(p.liveUrl || p.videoUrl || p.githubUrl) && (
               <ul className={styles.inline}>
                 {p.liveUrl && (
                   <li>
                     <a href={p.liveUrl}>Live</a>
+                  </li>
+                )}
+                {p.videoUrl && (
+                  <li>
+                    <a href={p.videoUrl}>Demo Video</a>
                   </li>
                 )}
                 {p.githubUrl && (

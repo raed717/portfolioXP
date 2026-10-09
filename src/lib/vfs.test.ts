@@ -31,7 +31,7 @@ describe("portfolio file system", () => {
   it("does not create demo.exe for projects with no usable link", () => {
     for (const p of projects) {
       const demo = getNode(fsRoot, `${PATHS.projects}/${p.title}/demo.exe`);
-      expect(Boolean(demo)).toBe(Boolean(p.liveUrl || p.githubUrl));
+      expect(Boolean(demo)).toBe(Boolean(p.liveUrl || p.githubUrl || p.videoUrl));
     }
   });
 });

@@ -34,6 +34,39 @@
       "experienceCompany": "WOLO"
     },
     {
+      "title": "KESMA — قسمة",
+      "description": "GIS workbench to visualize, divide and compare land-division scenarios for inherited or jointly owned land.",
+      "technologies": [
+        "Next.js",
+        "MapLibre GL",
+        "TypeScript",
+        "JSTS",
+        "Dexie.js",
+        "Zustand",
+        "Tailwind CSS"
+      ],
+      "image": "https://res.cloudinary.com/dfytfu2jq/image/upload/v1791555981/index-24-600s_b6zzfr.png",
+      "github": "https://github.com/raed717/kesma",
+      "live": "https://kesma.vercel.app/",
+      "video": "https://res.cloudinary.com/dfytfu2jq/video/upload/v1791555976/brag_gkyo6y.mp4",
+      "github_available": true,
+      "live_available": true,
+      "video_available": true,
+      "details_available": true,
+      "detailImages": [
+        "https://res.cloudinary.com/dfytfu2jq/image/upload/v1791555981/index-24-600s_b6zzfr.png"
+      ],
+      "longDescription": "KESMA (قسمة) is a client-side GIS workbench built to transform contentious land-division negotiations into transparent, measurable decision-support workflows. Designed for co-owners and heirs, the platform models exact fractional inheritance shares (farāʾiḍ), multi-criteria spatial valuation (soil value zones, fixed point assets, and road frontage access), automated parallel strip partitioning, and real-time topology-constrained vertex editing. It operates offline-first in the browser with IndexedDB persistence, multilingual support (Arabic RTL, French, English), and vector-rendered A4 print-ready PDF reports.",
+      "features": [
+        "Multi-format spatial ingestion: import GeoJSON, KML/KMZ, zipped Shapefiles, GPX tracks, or CSV with projected CRS detection and reprojection.",
+        "Exact fractional share engine: computes exact fractions (1/8, 1/6, 2/3), percentages, surface targets, and residual remainder weighting.",
+        "Automated & topology-preserving partitioning: parallel strip auto-splitting by surface area or value, lot split/merge, and vertex editing constrained to property bounds.",
+        "Spatial value & access model: base rate per m², configurable multi-polygon value zones, fixed-value assets (wells, structures), and 3m+ road frontage access validation.",
+        "Side-by-side scenario comparison & reconciliation: synchronized multi-map indicator comparison, live balance vs. target tracking, and topology self-intersection checks.",
+        "Vector report generation & portable exports: browser-rendered print-ready A4 PDF reports with disclaimers, .kesma.json project files, GeoJSON, Excel (.xlsx), and CSV tables."
+      ]
+    },
+    {
       "title": "Mining Maps",
       "description": "Advanced portfolio of interactive maps and spatial analytics for mining operations, asset management, and environmental monitoring.",
       "technologies": ["Next.js", "Supabase"],

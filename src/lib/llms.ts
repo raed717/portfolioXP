@@ -17,7 +17,7 @@ import { absoluteUrl } from "@/lib/site";
 
 export function buildLlmsTxt({ full }: { full: boolean }): string {
   const projectLines = projects.flatMap((p) => {
-    const link = p.liveUrl ?? p.githubUrl;
+    const link = p.liveUrl ?? p.videoUrl ?? p.githubUrl;
     const title = link ? `[${p.title}](${link})` : p.title;
     const head = `- ${title}: ${p.description} Stack: ${p.technologies.join(", ")}.`;
     if (!full) return [head];
